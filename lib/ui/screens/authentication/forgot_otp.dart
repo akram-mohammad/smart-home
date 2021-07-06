@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_home/ui/screens/authentication/reset_password.dart';
 import 'package:smart_home/ui/widgets/empty_appbar.dart';
 import 'package:smart_home/ui/widgets/opt_text_field.dart';
 import 'package:smart_home/ui/widgets/regular_elevated_button.dart';
@@ -67,7 +68,10 @@ class OTPPage extends StatelessWidget {
             ),
             Column(
               children: [
-                RegularElevatedButton(title: 'Verify'),
+                RegularElevatedButton(
+                  title: 'Verify',
+                  page: ResetPasswordPage(),
+                ),
                 SizedBox(
                   height: 15.0,
                 ),
