@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_home/ui/screens/authentication/password_updated.dart';
 import 'package:smart_home/ui/widgets/empty_appbar.dart';
 import 'package:smart_home/ui/widgets/regular_elevated_button.dart';
 import 'package:smart_home/ui/widgets/regular_text_field.dart';
@@ -34,7 +35,10 @@ class ResetPasswordPage extends StatelessWidget {
               SizedBox(
                 height: 15.0,
               ),
-              RegularElevatedButton(title: 'Change Password'),
+              RegularElevatedButton(
+                title: 'Change Password',
+                page: PasswordUpdatedPage(),
+              ),
             ],
           ),
         ),
