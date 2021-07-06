@@ -9,8 +9,9 @@ class RegularTextField extends StatelessWidget {
         border: InputBorder.none,
         hintText: 'Username',
         filled: true,
+        isDense: true,
         fillColor: Colors.white,
-        contentPadding: EdgeInsets.only(left: 20.0),
+        contentPadding: EdgeInsets.only(left: 20.0, top: 18.0, bottom: 18.0),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Theme.of(context).accentColor),
           borderRadius: BorderRadius.circular(8.0),
