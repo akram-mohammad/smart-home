@@ -64,7 +64,11 @@ class LoginPage extends StatelessWidget {
                     textAlign: TextAlign.end,
                     text: TextSpan(
                       text: 'Forgot Password?',
-                      style: Theme.of(context).textTheme.headline5,
+                      style: TextStyle(
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF1FD38F),
+                      ),
                       recognizer: new TapGestureRecognizer()
                         ..onTap = () {
                           Navigator.push(
@@ -88,11 +92,15 @@ class LoginPage extends StatelessWidget {
                     children: [
                       new TextSpan(
                         text: 'Don\'t have an account? ',
-                        style: Theme.of(context).textTheme.bodyText2,
+                        style: Theme.of(context).textTheme.headline6,
                       ),
                       new TextSpan(
                         text: 'Register Now',
-                        style: Theme.of(context).textTheme.headline5,
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF1FD38F),
+                        ),
                         recognizer: new TapGestureRecognizer()
                           ..onTap = () {
                             Navigator.push(

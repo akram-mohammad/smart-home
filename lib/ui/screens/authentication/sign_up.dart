@@ -28,8 +28,8 @@ class SignUpPage extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   'assets/imgs/shicon.svg',
-                  width: 70.0,
-                  height: 70.0,
+                  width: 60.0,
+                  height: 60.0,
                 ),
                 SizedBox(
                   height: 15.0,
@@ -39,27 +39,27 @@ class SignUpPage extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline3,
                 ),
                 SizedBox(
-                  height: 30.0,
+                  height: 20.0,
                 ),
                 RegularTextField(),
                 SizedBox(
-                  height: 15.0,
+                  height: 10.0,
                 ),
                 RegularTextField(),
                 SizedBox(
-                  height: 15.0,
+                  height: 10.0,
                 ),
                 RegularTextField(),
                 SizedBox(
-                  height: 15.0,
+                  height: 10.0,
                 ),
                 RegularTextField(),
                 SizedBox(
-                  height: 15.0,
+                  height: 10.0,
                 ),
                 RegularTextField(),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 30.0),
+                  padding: const EdgeInsets.symmetric(vertical: 25.0),
                   child: Text(
                     'By clicking "Create Account", you agree to our Terms & Conditions and Privacy Policy',
                     style: Theme.of(context).textTheme.bodyText1,
@@ -76,11 +76,15 @@ class SignUpPage extends StatelessWidget {
                     children: [
                       new TextSpan(
                         text: 'Already have a smarthome account? ',
-                        style: Theme.of(context).textTheme.bodyText2,
+                        style: Theme.of(context).textTheme.headline6,
                       ),
                       new TextSpan(
                         text: 'Sign in',
-                        style: Theme.of(context).textTheme.headline5,
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF1FD38F),
+                        ),
                         recognizer: new TapGestureRecognizer()
                           ..onTap = () {
                             Navigator.push(

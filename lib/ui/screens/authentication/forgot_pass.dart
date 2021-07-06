@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smart_home/ui/screens/authentication/forgot_otp.dart';
 import 'package:smart_home/ui/widgets/empty_appbar.dart';
 import 'package:smart_home/ui/widgets/regular_elevated_button.dart';
 import 'package:smart_home/ui/widgets/regular_text_field.dart';
@@ -71,7 +72,10 @@ class ForgotPassword extends StatelessWidget {
               SizedBox(
                 height: 10.0,
               ),
-              RegularElevatedButton(title: 'Send OTP')
+              RegularElevatedButton(
+                title: 'Send OTP',
+                page: OTPPage(),
+              )
             ],
           ),
         ),
