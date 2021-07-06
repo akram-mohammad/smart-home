@@ -12,30 +12,25 @@ class EmptyAppbar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       brightness: Brightness.dark, // status bar brightness
       backgroundColor: Theme.of(context).primaryColor,
-      leading: Stack(
-        children: [
-          Center(
-            child: Container(
-              height: 35,
-              width: 35,
-              decoration: BoxDecoration(
-                color: Color(0xFF4C5154),
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              child: Center(
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Icon(
-                    Icons.arrow_back_ios_outlined,
-                    size: 17,
-                  ),
-                ),
-              ),
+      leading: Center(
+        child: Container(
+          height: 35,
+          width: 35,
+          decoration: BoxDecoration(
+            color: Color(0xFF4C5154),
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+          child: IconButton(
+            splashRadius: 10.0,
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: Icon(
+              Icons.arrow_back_ios_outlined,
+              size: 17,
             ),
-          )
-        ],
+          ),
+        ),
       ),
     );
   }
