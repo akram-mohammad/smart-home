@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:smart_home/ui/screens/authentication/start.dart';
 
 class EmptyAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const EmptyAppbar({Key? key}) : super(key: key);
+  final bool start;
+  const EmptyAppbar({Key? key, this.start = false}) : super(key: key);
   @override
   Size get preferredSize => const Size.fromHeight(70);
 
@@ -23,7 +25,10 @@ class EmptyAppbar extends StatelessWidget implements PreferredSizeWidget {
           child: IconButton(
             splashRadius: 10.0,
             onPressed: () {
-              Navigator.of(context).pop();
+              start
+                  ? Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (ctx) => StartPage()))
+                  : Navigator.of(context).pop();
             },
             icon: Icon(
               Icons.arrow_back_ios_outlined,

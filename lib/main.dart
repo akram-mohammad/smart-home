@@ -40,16 +40,15 @@ class MyApp extends StatelessWidget {
           headline4: TextStyle(
               fontSize: 72.0, fontWeight: FontWeight.w700, color: Colors.white),
           headline5: TextStyle(
-              fontSize: 72.0, fontWeight: FontWeight.w700, color: Colors.white),
+            fontSize: 14.0,
+            fontWeight: FontWeight.w600,
+            color: Color(0xFF1FD38F),
+          ),
           headline6: TextStyle(
               fontSize: 14.0, fontWeight: FontWeight.w400, color: Colors.white),
-          bodyText1: TextStyle(
-              fontSize: 14.0,
-              fontFamily: 'Hind',
-              color: Colors.white,
-              height: 1.6),
-          bodyText2: TextStyle(
-              fontSize: 14.0, fontFamily: 'Hind', color: Colors.white),
+          bodyText1:
+              TextStyle(fontSize: 14.0, color: Colors.white, height: 1.6),
+          bodyText2: TextStyle(fontSize: 14.0, color: Colors.white),
         ),
       ),
       home: MyHomePage(title: 'Smart Home'),

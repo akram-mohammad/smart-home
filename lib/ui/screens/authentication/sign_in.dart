@@ -1,5 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smart_home/ui/screens/authentication/forgot_pass.dart';
+import 'package:smart_home/ui/screens/authentication/sign_up.dart';
 import 'package:smart_home/ui/widgets/empty_appbar.dart';
 import 'package:smart_home/ui/widgets/regular_elevated_button.dart';
 import 'package:smart_home/ui/widgets/regular_text_field.dart';
@@ -12,7 +15,7 @@ class LoginPage extends StatelessWidget {
     Size mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      appBar: EmptyAppbar(),
+      appBar: EmptyAppbar(start: true),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: SingleChildScrollView(
@@ -57,11 +60,21 @@ class LoginPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: SizedBox(
                   width: mediaQuery.width,
-                  child: Text(
-                    'Forgot Password?',
+                  child: RichText(
                     textAlign: TextAlign.end,
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600, fontFamily: 'Bozon'),
+                    text: TextSpan(
+                      text: 'Forgot Password?',
+                      style: Theme.of(context).textTheme.headline5,
+                      recognizer: new TapGestureRecognizer()
+                        ..onTap = () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (ctx) => ForgotPassword(),
+                            ),
+                          );
+                        },
+                    ),
                   ),
                 ),
               ),
@@ -70,10 +83,28 @@ class LoginPage extends StatelessWidget {
                 height: 10.0,
               ),
               Center(
-                child: Text(
-                  'Don\'t have an account ? Register Now',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w600, fontFamily: 'Bozon'),
+                child: RichText(
+                  text: new TextSpan(
+                    children: [
+                      new TextSpan(
+                        text: 'Don\'t have an account? ',
+                        style: Theme.of(context).textTheme.bodyText2,
+                      ),
+                      new TextSpan(
+                        text: 'Register Now',
+                        style: Theme.of(context).textTheme.headline5,
+                        recognizer: new TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (ctx) => SignUpPage(),
+                              ),
+                            );
+                          },
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],
