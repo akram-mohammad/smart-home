@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:smart_home/ui/screens/authentication/sign_up.dart';
+import 'package:smart_home/ui/screens/authentication/start.dart';
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         // text styling for headlines, titles, bodies of text, and more.
         textTheme: TextTheme(
           headline1: TextStyle(
-              fontSize: 72.0, fontWeight: FontWeight.w700, color: Colors.white),
+              fontSize: 36.0, fontWeight: FontWeight.w700, color: Colors.white),
           headline2: TextStyle(
               fontSize: 36.0, fontWeight: FontWeight.w700, color: Colors.white),
           headline3: TextStyle(
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
           headline5: TextStyle(
               fontSize: 72.0, fontWeight: FontWeight.w700, color: Colors.white),
           headline6: TextStyle(
-              fontSize: 36.0, fontStyle: FontStyle.italic, color: Colors.white),
+              fontSize: 14.0, fontWeight: FontWeight.w400, color: Colors.white),
           bodyText1: TextStyle(
               fontSize: 14.0,
               fontFamily: 'Hind',
@@ -69,8 +69,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    // MediaQuery.of(context).padding.top = 0;
-
-    return SignUpPage();
+    return StartPage();
   }
 }

@@ -1,5 +1,6 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_home/ui/widgets/regular_elevated_button.dart';
 import 'package:smart_home/ui/widgets/regular_text_field.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -13,6 +14,7 @@ class SignUpPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
+        toolbarHeight: 70,
         elevation: 0,
         brightness: Brightness.dark, // status bar brightness
         backgroundColor: Theme.of(context).primaryColor,
@@ -37,7 +39,7 @@ class SignUpPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Form(
           key: _formKey,
           child: SingleChildScrollView(
@@ -69,19 +71,10 @@ class SignUpPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Theme.of(context).accentColor,
-                      padding: const EdgeInsets.symmetric(vertical: 18.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    ),
-                    onPressed: () {},
-                    child: Text('Register'),
-                  ),
-                ),
+                    width: MediaQuery.of(context).size.width,
+                    child: RegularElevatedButton(
+                      title: 'Register',
+                    )),
                 SizedBox(
                   height: 20.0,
                 ),
