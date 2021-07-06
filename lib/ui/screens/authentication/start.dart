@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smart_home/ui/screens/authentication/sign_in.dart';
+import 'package:smart_home/ui/screens/authentication/sign_up.dart';
 import 'package:smart_home/ui/widgets/regular_elevated_button.dart';
 
 class StartPage extends StatelessWidget {
@@ -41,21 +43,17 @@ class StartPage extends StatelessWidget {
               SizedBox(
                 height: mediaQuery.height * 0.1,
               ),
-              SizedBox(
-                width: mediaQuery.width,
-                child: RegularElevatedButton(
-                  title: 'Login',
-                  inverted: false,
-                ),
+              RegularElevatedButton(
+                title: 'Login',
+                inverted: false,
+                page: LoginPage(),
               ),
               SizedBox(
                 height: 15.0,
               ),
-              SizedBox(
-                width: mediaQuery.width,
-                child: RegularElevatedButton(
-                  title: 'Register',
-                ),
+              RegularElevatedButton(
+                title: 'Register',
+                page: SignUpPage(),
               ),
             ],
           ),

@@ -1,5 +1,6 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_home/ui/widgets/empty_appbar.dart';
 import 'package:smart_home/ui/widgets/regular_elevated_button.dart';
 import 'package:smart_home/ui/widgets/regular_text_field.dart';
 
@@ -13,31 +14,7 @@ class SignUpPage extends StatelessWidget {
     // CollectionReference users = FirebaseFirestore.instance.collection('tests');
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      appBar: AppBar(
-        toolbarHeight: 70,
-        elevation: 0,
-        brightness: Brightness.dark, // status bar brightness
-        backgroundColor: Theme.of(context).primaryColor,
-        leading: Stack(
-          children: [
-            Center(
-              child: Container(
-                height: 35,
-                width: 35,
-                decoration: BoxDecoration(
-                  color: Color(0xFF4C5154),
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Center(
-                    child: Icon(
-                  Icons.arrow_back_ios_outlined,
-                  size: 17,
-                )),
-              ),
-            )
-          ],
-        ),
-      ),
+      appBar: EmptyAppbar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Form(
@@ -70,11 +47,9 @@ class SignUpPage extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ),
-                SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: RegularElevatedButton(
-                      title: 'Register',
-                    )),
+                RegularElevatedButton(
+                  title: 'Register',
+                ),
                 SizedBox(
                   height: 20.0,
                 ),
