@@ -66,20 +66,16 @@ class OTPPage extends StatelessWidget {
                 ),
               ),
             ),
-            Column(
-              children: [
-                RegularElevatedButton(
-                  title: 'Verify',
-                  page: ResetPasswordPage(),
-                ),
-                SizedBox(
-                  height: 15.0,
-                ),
-                RegularElevatedButton(title: 'Resend OTP'),
-                SizedBox(
-                  height: 20.0,
-                )
-              ],
+            RegularElevatedButton(
+              title: 'Verify',
+              page: ResetPasswordPage(),
+            ),
+            SizedBox(
+              height: 15.0,
+            ),
+            RegularElevatedButton(title: 'Resend OTP'),
+            SizedBox(
+              height: 20.0,
             )
           ],
         ),
