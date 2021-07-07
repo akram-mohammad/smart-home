@@ -14,14 +14,16 @@ class OTPPage extends StatefulWidget {
 }
 
 class _OTPPageState extends State<OTPPage> {
+  final GlobalKey<FormState> _formKey = GlobalKey();
   var _userOTP = [];
   String stringList = '';
 
   void verifyOTP() async {
+    stringList = _userOTP.join("");
+    print(stringList);
     var res = await EmailAuth.validate(
         receiverMail: widget.email, userOTP: stringList);
-    stringList = _userOTP.join("");
-    print('hi$stringList');
+    stringList = '';
     if (res) {
       print("OTP Verified");
       Navigator.push(context, MaterialPageRoute(builder: (ctx) => LoginPage()));
@@ -68,54 +70,57 @@ class _OTPPageState extends State<OTPPage> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.15,
                       width: MediaQuery.of(context).size.width,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          OTPTextField(
-                            callback: (val) {
-                              setState(() {
-                                _userOTP.add(val);
-                              });
-                            },
-                          ),
-                          OTPTextField(
-                            callback: (val) {
-                              setState(() {
-                                _userOTP.add(val);
-                              });
-                            },
-                          ),
-                          OTPTextField(
-                            callback: (val) {
-                              setState(() {
-                                _userOTP.add(val);
-                              });
-                            },
-                          ),
-                          OTPTextField(
-                            callback: (val) {
-                              setState(() {
-                                _userOTP.add(val);
-                              });
-                            },
-                          ),
-                          OTPTextField(
-                            callback: (val) {
-                              setState(() {
-                                _userOTP.add(val);
-                                print(_userOTP);
-                              });
-                            },
-                          ),
-                          OTPTextField(
-                            callback: (val) {
-                              setState(() {
-                                _userOTP.add(val);
-                                print(_userOTP);
-                              });
-                            },
-                          )
-                        ],
+                      child: Form(
+                        key: _formKey,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            OTPTextField(
+                              callback: (val) {
+                                setState(() {
+                                  _userOTP.add(val);
+                                });
+                              },
+                            ),
+                            OTPTextField(
+                              callback: (val) {
+                                setState(() {
+                                  _userOTP.add(val);
+                                });
+                              },
+                            ),
+                            OTPTextField(
+                              callback: (val) {
+                                setState(() {
+                                  _userOTP.add(val);
+                                });
+                              },
+                            ),
+                            OTPTextField(
+                              callback: (val) {
+                                setState(() {
+                                  _userOTP.add(val);
+                                });
+                              },
+                            ),
+                            OTPTextField(
+                              callback: (val) {
+                                setState(() {
+                                  _userOTP.add(val);
+                                  print(_userOTP);
+                                });
+                              },
+                            ),
+                            OTPTextField(
+                              callback: (val) {
+                                setState(() {
+                                  _userOTP.add(val);
+                                  print(_userOTP);
+                                });
+                              },
+                            )
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -137,6 +142,7 @@ class _OTPPageState extends State<OTPPage> {
               title: 'Verify',
               onPress: () {
                 verifyOTP();
+                _formKey.currentState!.reset();
               },
             ),
             SizedBox(
