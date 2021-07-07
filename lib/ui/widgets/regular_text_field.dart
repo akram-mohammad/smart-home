@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
 
 class RegularTextField extends StatelessWidget {
+  final TextEditingController? controller;
+  final Function validate;
+  final String label;
+  final bool obsecure;
+  RegularTextField(
+      {this.controller,
+      required this.validate,
+      required this.label,
+      this.obsecure = false});
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
+      validator: (val) {
+        validate(val);
+      },
+      obscureText: obsecure,
       style: TextStyle(fontSize: 15.0, color: Colors.black),
       decoration: InputDecoration(
         border: InputBorder.none,
-        hintText: 'Username',
+        hintText: label,
         filled: true,
         isDense: true,
         fillColor: Colors.white,

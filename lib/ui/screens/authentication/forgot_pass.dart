@@ -1,12 +1,32 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smart_home/ui/screens/authentication/forgot_otp.dart';
+import 'package:smart_home/ui/screens/authentication/sign_in.dart';
 import 'package:smart_home/ui/widgets/empty_appbar.dart';
+import 'package:smart_home/ui/widgets/form_text_field.dart';
 import 'package:smart_home/ui/widgets/regular_elevated_button.dart';
-import 'package:smart_home/ui/widgets/regular_text_field.dart';
 
 class ForgotPassword extends StatelessWidget {
-  const ForgotPassword({Key? key}) : super(key: key);
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final GlobalKey<FormState> _formKey = GlobalKey();
+
+  TextEditingController _emailController = TextEditingController();
+
+  void reset(BuildContext context) async {
+    try {
+      await _firebaseAuth.sendPasswordResetEmail(email: _emailController.text);
+      Navigator.push(context, MaterialPageRoute(builder: (ctx) => LoginPage()));
+    } on FirebaseAuthException catch (e) {
+      print('Failed with error code: ${e.code}');
+      print(e.message);
+      ScaffoldMessenger.of(context).removeCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Email not found"),
+        backgroundColor: Colors.red,
+      ));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,14 +96,33 @@ class ForgotPassword extends StatelessWidget {
                 ),
               ),
             ),
-            RegularTextField(),
+            Form(
+              key: _formKey,
+              child: ReformedTextField(
+                name: 'email',
+                hint: 'Email Address',
+                controller: _emailController,
+                validator: FormBuilderValidators.compose(
+                  [
+                    FormBuilderValidators.required(context,
+                        errorText: 'This field is required'),
+                    FormBuilderValidators.email(context,
+                        errorText: 'Enter a valid email address'),
+                  ],
+                ),
+              ),
+            ),
             SizedBox(
               height: 10.0,
             ),
             RegularElevatedButton(
-              title: 'Send OTP',
-              page: OTPPage(),
-            ),
+                title: 'Send Reset Email',
+                onPress: () {
+                  if (_formKey.currentState != null &&
+                      _formKey.currentState!.validate()) {
+                    reset(context);
+                  }
+                }),
             SizedBox(
               height: 25.0,
             ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smart_home/ui/screens/authentication/sign_in.dart';
 import 'package:smart_home/ui/widgets/empty_appbar.dart';
 import 'package:smart_home/ui/widgets/regular_elevated_button.dart';
 
@@ -40,7 +39,7 @@ class PasswordUpdatedPage extends StatelessWidget {
               ),
               RegularElevatedButton(
                 title: 'Login',
-                page: LoginPage(),
+                onPress: () {},
               )
             ],
           ),

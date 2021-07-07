@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 class RegularElevatedButton extends StatelessWidget {
   final String title;
   final bool inverted;
-  final page;
-  RegularElevatedButton({required this.title, this.inverted = true, this.page});
+  final Function onPress;
+
+  RegularElevatedButton(
+      {required this.title, this.inverted = true, required this.onPress});
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +23,7 @@ class RegularElevatedButton extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (ctx) => this.page));
+          onPress();
         },
         child: Text(
           title,

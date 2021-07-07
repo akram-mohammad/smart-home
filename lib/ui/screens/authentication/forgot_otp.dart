@@ -1,11 +1,39 @@
+import 'package:email_auth/email_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_home/ui/screens/authentication/reset_password.dart';
+import 'package:smart_home/ui/screens/authentication/sign_in.dart';
 import 'package:smart_home/ui/widgets/empty_appbar.dart';
 import 'package:smart_home/ui/widgets/opt_text_field.dart';
 import 'package:smart_home/ui/widgets/regular_elevated_button.dart';
 
-class OTPPage extends StatelessWidget {
-  const OTPPage({Key? key}) : super(key: key);
+class OTPPage extends StatefulWidget {
+  final String email;
+  OTPPage({required this.email});
+
+  @override
+  _OTPPageState createState() => _OTPPageState();
+}
+
+class _OTPPageState extends State<OTPPage> {
+  var _userOTP = [];
+  String stringList = '';
+
+  void verifyOTP() async {
+    var res = await EmailAuth.validate(
+        receiverMail: widget.email, userOTP: stringList);
+    stringList = _userOTP.join("");
+    print('hi$stringList');
+    if (res) {
+      print("OTP Verified");
+      Navigator.push(context, MaterialPageRoute(builder: (ctx) => LoginPage()));
+    } else {
+      ScaffoldMessenger.of(context).removeCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Wrong OTP"),
+        backgroundColor: Colors.red,
+      ));
+      print("Invalid OTP");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +71,50 @@ class OTPPage extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          OTPTextField(),
-                          OTPTextField(),
-                          OTPTextField(),
-                          OTPTextField(),
-                          OTPTextField()
+                          OTPTextField(
+                            callback: (val) {
+                              setState(() {
+                                _userOTP.add(val);
+                              });
+                            },
+                          ),
+                          OTPTextField(
+                            callback: (val) {
+                              setState(() {
+                                _userOTP.add(val);
+                              });
+                            },
+                          ),
+                          OTPTextField(
+                            callback: (val) {
+                              setState(() {
+                                _userOTP.add(val);
+                              });
+                            },
+                          ),
+                          OTPTextField(
+                            callback: (val) {
+                              setState(() {
+                                _userOTP.add(val);
+                              });
+                            },
+                          ),
+                          OTPTextField(
+                            callback: (val) {
+                              setState(() {
+                                _userOTP.add(val);
+                                print(_userOTP);
+                              });
+                            },
+                          ),
+                          OTPTextField(
+                            callback: (val) {
+                              setState(() {
+                                _userOTP.add(val);
+                                print(_userOTP);
+                              });
+                            },
+                          )
                         ],
                       ),
                     ),
@@ -68,12 +135,17 @@ class OTPPage extends StatelessWidget {
             ),
             RegularElevatedButton(
               title: 'Verify',
-              page: ResetPasswordPage(),
+              onPress: () {
+                verifyOTP();
+              },
             ),
             SizedBox(
               height: 15.0,
             ),
-            RegularElevatedButton(title: 'Resend OTP'),
+            RegularElevatedButton(
+              title: 'Resend OTP',
+              onPress: () {},
+            ),
             SizedBox(
               height: 20.0,
             )

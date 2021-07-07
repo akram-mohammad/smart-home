@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class OTPTextField extends StatelessWidget {
-  const OTPTextField({Key? key}) : super(key: key);
+  OTPTextField({Key? key, this.callback}) : super(key: key);
+  final callback;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,10 @@ class OTPTextField extends StatelessWidget {
       child: SizedBox(
         width: 40.0,
         child: TextFormField(
-          onChanged: (val) => node.nextFocus(),
+          onChanged: (val) {
+            callback(val);
+            node.nextFocus();
+          },
           keyboardType: TextInputType.number,
           style: TextStyle(
               fontSize: 25.0, color: Colors.black, fontWeight: FontWeight.w600),

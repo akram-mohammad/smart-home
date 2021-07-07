@@ -46,14 +46,20 @@ class StartPage extends StatelessWidget {
               RegularElevatedButton(
                 title: 'Login',
                 inverted: false,
-                page: LoginPage(),
+                onPress: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (ctx) => LoginPage()));
+                },
               ),
               SizedBox(
                 height: 15.0,
               ),
               RegularElevatedButton(
                 title: 'Register',
-                page: SignUpPage(),
+                onPress: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (ctx) => SignUpPage()));
+                },
               ),
             ],
           ),

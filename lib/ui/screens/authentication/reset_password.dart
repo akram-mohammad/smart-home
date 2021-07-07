@@ -5,8 +5,6 @@ import 'package:smart_home/ui/widgets/regular_elevated_button.dart';
 import 'package:smart_home/ui/widgets/regular_text_field.dart';
 
 class ResetPasswordPage extends StatelessWidget {
-  const ResetPasswordPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,17 +25,28 @@ class ResetPasswordPage extends StatelessWidget {
                 child: Text(
                     'Your new password must be different from previously used passwords'),
               ),
-              RegularTextField(),
+              RegularTextField(
+                validate: () {},
+                label: 'New Password',
+              ),
               SizedBox(
                 height: 15.0,
               ),
-              RegularTextField(),
+              RegularTextField(
+                validate: () {},
+                label: 'Confirm Password',
+              ),
               SizedBox(
                 height: 15.0,
               ),
               RegularElevatedButton(
                 title: 'Change Password',
-                page: PasswordUpdatedPage(),
+                onPress: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (ctx) => PasswordUpdatedPage()));
+                },
               ),
             ],
           ),
