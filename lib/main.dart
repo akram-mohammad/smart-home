@@ -2,6 +2,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:smart_home/ui/screens/authentication/start.dart';
+import 'package:smart_home/ui/screens/devices/devices_list.dart';
+
+import 'ui/screens/authentication/forgot_otp.dart';
+import 'ui/screens/authentication/forgot_otp.dart';
+import 'ui/screens/authentication/forgot_pass.dart';
+import 'ui/screens/authentication/password_updated.dart';
+import 'ui/screens/authentication/reset_password.dart';
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -80,6 +87,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return StartPage();
+    return DevicesList();
   }
 }
