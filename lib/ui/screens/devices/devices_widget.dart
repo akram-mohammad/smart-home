@@ -52,7 +52,7 @@ class DeviceWidget extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 15.0),
                     child: Container(
-                      height: 120,
+                      height: 115,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: roomListDevices!.length,

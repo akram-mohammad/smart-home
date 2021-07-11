@@ -21,7 +21,7 @@ class _TurnDeviceState extends State<TurnDevice> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Container(
-        width: 135,
+        width: 145,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.0),
             color: Theme.of(context).cardColor),
