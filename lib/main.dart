@@ -1,9 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:smart_home/ui/screens/authentication/sign_up.dart';
-import 'package:smart_home/ui/screens/authentication/start.dart';
-import 'package:smart_home/ui/screens/devices/devices_list.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_home/core/providers/device_provider.dart';
+import 'package:smart_home/core/providers/room_provider.dart';
+import 'package:smart_home/core/providers/static_provider.dart';
+import 'package:smart_home/ui/screens/initialization_page.dart';
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -13,7 +15,19 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp(MyApp());
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) async {
+    runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => DeviceProvider()),
+          ChangeNotifierProvider(create: (context) => StaticProvider()),
+          ChangeNotifierProvider(create: (context) => RoomProvider())
+        ],
+        child: MyApp(),
+      ),
+    );
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -84,6 +98,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return SignUpPage();
+    return InitialPage();
   }
 }
