@@ -10,9 +10,12 @@ class DevicesAppbar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       brightness: Brightness.dark, // status bar brightness
       backgroundColor: Theme.of(context).primaryColor,
-      title: Text(
-        'Devices',
-        style: Theme.of(context).textTheme.headline4,
+      title: Padding(
+        padding: const EdgeInsets.only(top: 8.0),
+        child: Text(
+          'Devices',
+          style: Theme.of(context).textTheme.headline4,
+        ),
       ),
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(0),
