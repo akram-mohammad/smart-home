@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_home/core/providers/static_provider.dart';
 
 class TurnDevice extends StatefulWidget {
+  final int index;
+  final int deviceTypeId;
+
+  TurnDevice({required this.index, required this.deviceTypeId});
   @override
   _TurnDeviceState createState() => _TurnDeviceState();
 }
@@ -10,10 +16,12 @@ class _TurnDeviceState extends State<TurnDevice> {
 
   @override
   Widget build(BuildContext context) {
+    StaticProvider _staticProvider =
+        Provider.of<StaticProvider>(context, listen: false);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Container(
-        width: 150,
+        width: 135,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.0),
             color: Theme.of(context).cardColor),
@@ -29,7 +37,9 @@ class _TurnDeviceState extends State<TurnDevice> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.asset(
-                    'assets/imgs/bulb.png',
+                    _staticProvider
+                        .deviceTypeList[widget.deviceTypeId - 1].tdIcon
+                        .toString(),
                     height: 50.0,
                     width: 50.0,
                   ),
@@ -58,7 +68,8 @@ class _TurnDeviceState extends State<TurnDevice> {
                 ],
               ),
               Text(
-                'Light Bulb ',
+                _staticProvider.deviceTypeList[widget.deviceTypeId - 1].tdName
+                    .toString(),
                 style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
               ),
               Text(

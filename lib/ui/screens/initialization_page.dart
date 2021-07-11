@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_home/core/providers/static_provider.dart';
-import 'package:smart_home/ui/screens/authentication/sign_up.dart';
+import 'package:smart_home/ui/screens/devices/devices_list.dart';
 import 'package:smart_home/ui/widgets/empty_appbar.dart';
 
 class InitialPage extends StatelessWidget {
@@ -14,7 +14,7 @@ class InitialPage extends StatelessWidget {
           Provider.of<StaticProvider>(context, listen: false);
 
       _staticProvider.getTypes().then((val) => Navigator.push(
-          context, MaterialPageRoute(builder: (ctx) => SignUpPage())));
+          context, MaterialPageRoute(builder: (ctx) => DevicesList())));
     });
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
