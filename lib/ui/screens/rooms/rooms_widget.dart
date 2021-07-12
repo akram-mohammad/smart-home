@@ -68,10 +68,6 @@ class RoomsWidget extends StatelessWidget {
                               itemCount:
                                   _roomProvider.roomList[index].devices!.length,
                               itemBuilder: (ctx, i) {
-                                print(roomListDevices);
-                                print(_staticProvider.deviceTypeList[1].tdIcon);
-                                print(_staticProvider.deviceTypeList[2].tdIcon);
-                                print(_staticProvider.deviceTypeList[3].tdIcon);
                                 return Padding(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 3.0),
