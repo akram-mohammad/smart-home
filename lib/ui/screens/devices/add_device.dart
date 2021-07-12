@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:smart_home/ui/screens/devices/connect_device.dart';
 import 'package:smart_home/ui/widgets/empty_appbar.dart';
 import 'package:smart_home/ui/widgets/regular_elevated_button.dart';
 import 'package:smart_home/ui/widgets/regular_text_field.dart';
 
 class AddDevice extends StatelessWidget {
   AddDevice({Key? key}) : super(key: key);
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _secretController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,99 +45,55 @@ class AddDevice extends StatelessWidget {
                     SizedBox(
                       height: 10.0,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.circle,
-                            color: Colors.white,
-                            size: 8.0,
-                          ),
-                          SizedBox(
-                            width: 10.0,
-                          ),
-                          Text(
-                            'Add controller secret key.',
-                            style: TextStyle(fontSize: 15.0),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.circle,
-                            color: Colors.white,
-                            size: 8.0,
-                          ),
-                          SizedBox(
-                            width: 10.0,
-                          ),
-                          Text(
-                            'Connect to HomeOnPhone wifi.',
-                            style: TextStyle(fontSize: 15.0),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.circle,
-                            color: Colors.white,
-                            size: 8.0,
-                          ),
-                          SizedBox(
-                            width: 10.0,
-                          ),
-                          Text(
-                            'Select the device.',
-                            style: TextStyle(fontSize: 15.0),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.circle,
-                            color: Colors.white,
-                            size: 8.0,
-                          ),
-                          SizedBox(
-                            width: 10.0,
-                          ),
-                          Text(
-                            'Add the device to a room.',
-                            style: TextStyle(fontSize: 15.0),
-                          ),
-                        ],
-                      ),
-                    ),
+                    instruction('Add controller secret key.'),
+                    instruction('Connect to HomeOnPhone wifi.'),
+                    instruction('Select the device.'),
+                    instruction('Add the device to a room.')
                   ],
                 ),
               ),
             ),
             RegularTextField(
-              controller: _emailController,
+              controller: _secretController,
               validate: () {},
               label: 'Add Controller Secret Key',
             ),
             SizedBox(
               height: 10.0,
             ),
-            RegularElevatedButton(title: 'Add Secret Key', onPress: () {}),
+            RegularElevatedButton(
+              title: 'Add Secret Key',
+              onPress: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (ctx) => ConnectDevice()));
+              },
+            ),
             SizedBox(height: 20.0)
           ],
         ),
       ),
     );
   }
+}
+
+Widget instruction(String text) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8.0),
+    child: Row(
+      children: [
+        Icon(
+          Icons.circle,
+          color: Colors.white,
+          size: 8.0,
+        ),
+        SizedBox(
+          width: 10.0,
+        ),
+        Text(
+          text,
+          style: TextStyle(fontSize: 15.0),
+        )
+      ],
+    ),
+  );
 }
