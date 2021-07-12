@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_home/ui/screens/devices/add_device.dart';
 
 class DevicesAppbar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(90);
@@ -6,6 +7,33 @@ class DevicesAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(right: 20.0),
+          child: Center(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColorLight,
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (ctx) => AddDevice()));
+                  },
+                  child: Icon(
+                    Icons.add,
+                    size: 25.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
       toolbarHeight: 70,
       elevation: 0,
       brightness: Brightness.dark, // status bar brightness

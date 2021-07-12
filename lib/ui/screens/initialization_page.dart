@@ -6,7 +6,6 @@ import 'package:smart_home/ui/screens/authentication/forgot_pass.dart';
 import 'package:smart_home/ui/screens/authentication/sign_in.dart';
 import 'package:smart_home/ui/screens/authentication/sign_up.dart';
 import 'package:smart_home/ui/screens/devices/devices_list.dart';
-import 'package:smart_home/ui/widgets/empty_appbar.dart';
 import 'package:smart_home/ui/widgets/navigation_bar.dart';
 
 class InitialPage extends StatefulWidget {
@@ -36,7 +35,6 @@ class _InitialPageState extends State<InitialPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      appBar: EmptyAppbar(start: true),
       body: FutureBuilder(
           future: _start(),
           builder: (ctx, snapshot) =>
@@ -49,7 +47,7 @@ class _InitialPageState extends State<InitialPage> {
           Icons.home,
           Icons.watch_later_outlined,
           Icons.flash_on_rounded,
-          Icons.menu,
+          Icons.bar_chart,
         ],
         onChange: (val) {
           if (_selectedIndex != val) {
