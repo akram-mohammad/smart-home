@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_home/core/providers/static_provider.dart';
 import 'package:smart_home/ui/screens/authentication/forgot_pass.dart';
-import 'package:smart_home/ui/screens/authentication/sign_in.dart';
 import 'package:smart_home/ui/screens/authentication/sign_up.dart';
 import 'package:smart_home/ui/screens/devices/devices_list.dart';
+import 'package:smart_home/ui/screens/rooms/rooms_list.dart';
 import 'package:smart_home/ui/widgets/navigation_bar.dart';
 
 class InitialPage extends StatefulWidget {
@@ -19,7 +19,7 @@ class _InitialPageState extends State<InitialPage> {
   int _selectedIndex = 2;
   var pages = [
     new SignUpPage(),
-    new LoginPage(),
+    new RoomsList(),
     new DevicesList(),
     new ForgotPassword()
   ];

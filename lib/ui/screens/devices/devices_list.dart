@@ -26,7 +26,17 @@ class _DevicesListState extends State<DevicesList>
       length: 6,
       child: Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
-        appBar: DevicesAppbar(),
+        appBar: DevicesAppbar(
+          title: 'Devices',
+          tabs: [
+            Text('All', style: TextStyle(fontSize: 18.0)),
+            Text('Light', style: TextStyle(fontSize: 18.0)),
+            Text('Socket', style: TextStyle(fontSize: 18.0)),
+            Text('Shutter', style: TextStyle(fontSize: 18.0)),
+            Text('TV', style: TextStyle(fontSize: 18.0)),
+            Text('Air Conditioner', style: TextStyle(fontSize: 18.0)),
+          ],
+        ),
         body: TabBarView(
           children: [
             hasDevices

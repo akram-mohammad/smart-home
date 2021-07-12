@@ -3,6 +3,9 @@ import 'package:smart_home/ui/screens/devices/add_device.dart';
 
 class DevicesAppbar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(90);
+  final List<Widget> tabs;
+  final String title;
+  DevicesAppbar({required this.tabs, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +40,11 @@ class DevicesAppbar extends StatelessWidget implements PreferredSizeWidget {
       toolbarHeight: 70,
       elevation: 0,
       brightness: Brightness.dark, // status bar brightness
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Theme.of(context).cardColor,
       title: Padding(
         padding: const EdgeInsets.only(top: 8.0),
         child: Text(
-          'Devices',
+          title,
           style: Theme.of(context).textTheme.headline4,
         ),
       ),
@@ -51,14 +54,7 @@ class DevicesAppbar extends StatelessWidget implements PreferredSizeWidget {
           padding: const EdgeInsets.symmetric(horizontal: 15.0),
           child: TabBar(
             labelPadding: EdgeInsets.all(10),
-            tabs: [
-              Text('All', style: TextStyle(fontSize: 18.0)),
-              Text('Light', style: TextStyle(fontSize: 18.0)),
-              Text('Socket', style: TextStyle(fontSize: 18.0)),
-              Text('Shutter', style: TextStyle(fontSize: 18.0)),
-              Text('TV', style: TextStyle(fontSize: 18.0)),
-              Text('Air Conditioner', style: TextStyle(fontSize: 18.0)),
-            ],
+            tabs: tabs,
             isScrollable: true,
           ),
         ),

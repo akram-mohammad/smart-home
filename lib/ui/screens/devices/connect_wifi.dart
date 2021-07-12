@@ -6,7 +6,7 @@ import 'package:smart_home/ui/widgets/regular_elevated_button.dart';
 
 class ConnectWifi extends StatelessWidget {
   ConnectWifi({Key? key}) : super(key: key);
-  bool _connected = false;
+  bool _connected = true;
   List<String> widgetList = ['A', 'B', 'C'];
 
   @override
