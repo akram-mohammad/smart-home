@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_home/ui/screens/rooms/add_room.dart';
 import 'package:smart_home/ui/screens/rooms/rooms_widget.dart';
 import 'package:smart_home/ui/widgets/devices_appbar.dart';
 
@@ -28,6 +29,7 @@ class _RoomsListState extends State<RoomsList>
       child: Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
         appBar: DevicesAppbar(
+          widget: AddRoom(),
           title: 'Rooms',
           tabs: [
             Text('First Floor', style: TextStyle(fontSize: 18.0)),

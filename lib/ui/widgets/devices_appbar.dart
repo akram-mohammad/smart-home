@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:smart_home/ui/screens/devices/add_device.dart';
 
 class DevicesAppbar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(90);
   final List<Widget> tabs;
   final String title;
-  DevicesAppbar({required this.tabs, required this.title});
+  final Widget widget;
+  DevicesAppbar(
+      {required this.tabs, required this.title, required this.widget});
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +24,8 @@ class DevicesAppbar extends StatelessWidget implements PreferredSizeWidget {
                 padding: const EdgeInsets.all(5.0),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (ctx) => AddDevice()));
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (ctx) => widget));
                   },
                   child: Icon(
                     Icons.add,

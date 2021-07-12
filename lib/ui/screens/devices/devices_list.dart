@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_home/ui/screens/devices/add_device.dart';
 import 'package:smart_home/ui/screens/devices/devices_widget.dart';
 import 'package:smart_home/ui/widgets/devices_appbar.dart';
 
@@ -27,6 +28,7 @@ class _DevicesListState extends State<DevicesList>
       child: Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
         appBar: DevicesAppbar(
+          widget: AddDevice(),
           title: 'Devices',
           tabs: [
             Text('All', style: TextStyle(fontSize: 18.0)),

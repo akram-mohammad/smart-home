@@ -37,11 +37,11 @@ class RoomsWidget extends StatelessWidget {
                             .toString()),
                         fit: BoxFit.cover,
                         colorFilter: new ColorFilter.mode(
-                            Colors.black.withOpacity(0.4), BlendMode.multiply),
+                            Colors.black.withOpacity(0.3), BlendMode.multiply),
                       ),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
+                      padding: const EdgeInsets.only(left: 15.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -96,7 +96,7 @@ class RoomsWidget extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            height: 20.0,
+                            height: 15.0,
                           )
                         ],
                       ),

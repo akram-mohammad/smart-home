@@ -37,6 +37,7 @@ dependencies:
   provider: ^5.0.0
   http: ^0.13.3
   loading_indicator: ^2.1.1
+  direct_select_flutter: ^1.1.1
 
 dev_dependencies:
   flutter_test:
