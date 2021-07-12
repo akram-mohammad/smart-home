@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:smart_home/core/providers/room_provider.dart';
 import 'package:smart_home/core/providers/static_provider.dart';
 import 'package:smart_home/ui/screens/authentication/forgot_otp.dart';
-import 'package:smart_home/ui/widgets/empty_appbar.dart';
 import 'package:smart_home/ui/widgets/regular_elevated_button.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -58,70 +57,65 @@ class SignUpPage extends StatelessWidget {
     StaticProvider _staticProvider =
         Provider.of<StaticProvider>(context, listen: false);
 
-    return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
-      appBar: EmptyAppbar(start: true),
-      body: Consumer<RoomProvider>(
-        builder: (context, _roomProvider, _) {
-          if (_roomProvider.roomList == []) {
-            return Center(child: CircularProgressIndicator());
-          } else {
-            return Column(
-              children: [
-                Container(
-                  height: 250,
-                  child: ListView.builder(
-                    itemCount: _roomProvider.roomList.length,
-                    itemBuilder: (ctx, index) {
-                      var roomListDevices =
-                          _roomProvider.roomList[index].devices;
-                      print('hi from ${_roomProvider.roomList}');
-                      return Column(
-                        children: [
-                          Text(_roomProvider.roomList[index].rType.toString()),
-                          Container(
-                            height: 100,
-                            child: ListView.builder(
-                              itemCount: roomListDevices!.length,
-                              itemBuilder: (ctx, index) {
-                                print(
-                                    'hi from ${_staticProvider.deviceTypeList}');
-                                return Text(_staticProvider
-                                    .deviceTypeList[roomListDevices[index] - 1]
-                                    .dTypeId
-                                    .toString());
-                              },
-                            ),
-                          )
-                        ],
-                      );
-                    },
-                  ),
+    return Consumer<RoomProvider>(
+      builder: (context, _roomProvider, _) {
+        if (_roomProvider.roomList == []) {
+          return Center(child: CircularProgressIndicator());
+        } else {
+          return Column(
+            children: [
+              Container(
+                height: 250,
+                child: ListView.builder(
+                  itemCount: _roomProvider.roomList.length,
+                  itemBuilder: (ctx, index) {
+                    var roomListDevices = _roomProvider.roomList[index].devices;
+                    print('hi from ${_roomProvider.roomList}');
+                    return Column(
+                      children: [
+                        Text(_roomProvider.roomList[index].rType.toString()),
+                        Container(
+                          height: 100,
+                          child: ListView.builder(
+                            itemCount: roomListDevices!.length,
+                            itemBuilder: (ctx, index) {
+                              print(
+                                  'hi from ${_staticProvider.deviceTypeList}');
+                              return Text(_staticProvider
+                                  .deviceTypeList[roomListDevices[index] - 1]
+                                  .dTypeId
+                                  .toString());
+                            },
+                          ),
+                        )
+                      ],
+                    );
+                  },
                 ),
-                SizedBox(height: 100),
-                RegularElevatedButton(
-                    title: 'Press me',
-                    onPress: () {
-                      firestore
-                          .collection('members')
-                          .doc('vGoPhuBIPLEeP2KmsjgD')
-                          .collection('rooms')
-                          .doc('2')
-                          .set({
-                        "custom_desc": '',
-                        "custom_img": '',
-                        "custom_name": '',
-                        "devices": [2, 1],
-                        "id_member": '',
-                        "r_type": 1,
-                      });
-                      _roomProvider.getRooms();
-                    })
-              ],
-            );
-          }
-        },
-      ),
+              ),
+              SizedBox(height: 100),
+              RegularElevatedButton(
+                  title: 'Press me',
+                  onPress: () {
+                    firestore
+                        .collection('members')
+                        .doc('vGoPhuBIPLEeP2KmsjgD')
+                        .collection('rooms')
+                        .doc('2')
+                        .set({
+                      "custom_desc": '',
+                      "custom_img": '',
+                      "custom_name": '',
+                      "devices": [2, 1],
+                      "id_member": '',
+                      "r_type": 1,
+                    });
+                    _roomProvider.getRooms();
+                  })
+            ],
+          );
+        }
+      },
     );
   }
 }

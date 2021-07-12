@@ -1,25 +1,64 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_home/core/providers/static_provider.dart';
+import 'package:smart_home/ui/screens/authentication/forgot_pass.dart';
+import 'package:smart_home/ui/screens/authentication/sign_in.dart';
+import 'package:smart_home/ui/screens/authentication/sign_up.dart';
 import 'package:smart_home/ui/screens/devices/devices_list.dart';
 import 'package:smart_home/ui/widgets/empty_appbar.dart';
+import 'package:smart_home/ui/widgets/navigation_bar.dart';
 
-class InitialPage extends StatelessWidget {
+class InitialPage extends StatefulWidget {
   InitialPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    Future.delayed(Duration(milliseconds: 100), () {
-      StaticProvider _staticProvider =
-          Provider.of<StaticProvider>(context, listen: false);
+  _InitialPageState createState() => _InitialPageState();
+}
 
-      _staticProvider.getTypes().then((val) => Navigator.push(
-          context, MaterialPageRoute(builder: (ctx) => DevicesList())));
-    });
+class _InitialPageState extends State<InitialPage> {
+  int _selectedIndex = 2;
+  var pages = [
+    new SignUpPage(),
+    new LoginPage(),
+    new DevicesList(),
+    new ForgotPassword()
+  ];
+
+  Future<void> _start() async {
+    StaticProvider _staticProvider =
+        Provider.of<StaticProvider>(context, listen: false);
+
+    await _staticProvider.getTypes();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: EmptyAppbar(start: true),
-      body: Center(child: CircularProgressIndicator()),
+      body: FutureBuilder(
+          future: _start(),
+          builder: (ctx, snapshot) =>
+              snapshot.connectionState == ConnectionState.done
+                  ? pages[_selectedIndex]
+                  : Center(child: CircularProgressIndicator())),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        defaultSelectedIndex: 2,
+        iconList: [
+          Icons.home,
+          Icons.watch_later_outlined,
+          Icons.flash_on_rounded,
+          Icons.menu,
+        ],
+        onChange: (val) {
+          if (_selectedIndex != val) {
+            setState(() {
+              _selectedIndex = val;
+            });
+          }
+        },
+      ),
     );
   }
 }
