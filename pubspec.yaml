@@ -36,6 +36,7 @@ dependencies:
   email_auth: ^0.0.1+4
   provider: ^5.0.0
   http: ^0.13.3
+  loading_indicator: ^2.1.1
 
 dev_dependencies:
   flutter_test:

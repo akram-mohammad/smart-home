@@ -23,8 +23,8 @@ class _ConnectionStatusState extends State<ConnectionStatus> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5.0),
       child: Container(
-        height: 10,
-        width: 10.0,
+        height: 11,
+        width: 11.0,
         child: CircularProgressIndicator(
           strokeWidth: 2,
           color: Colors.yellow,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_home/ui/screens/devices/connect_device.dart';
+import 'package:smart_home/ui/screens/devices/connect_wifi.dart';
 import 'package:smart_home/ui/widgets/empty_appbar.dart';
 import 'package:smart_home/ui/widgets/regular_elevated_button.dart';
 import 'package:smart_home/ui/widgets/regular_text_field.dart';
@@ -65,7 +65,7 @@ class AddDevice extends StatelessWidget {
               title: 'Add Secret Key',
               onPress: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (ctx) => ConnectDevice()));
+                    MaterialPageRoute(builder: (ctx) => ConnectWifi()));
               },
             ),
             SizedBox(height: 20.0)
